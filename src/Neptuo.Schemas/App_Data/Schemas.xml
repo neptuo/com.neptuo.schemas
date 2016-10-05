@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Schemas>
+  <Xsd>
+    <Title>The configuration for SharpKit Unobtrusive features plugin.</Title>
+    <Path>~/xsd/sharpkit-unobtrusivefeatures.xsd</Path>
+    <DocumentationUrl>http://www.neptuo.com/blog/2016/9/26/sharpkit-unobtrusivefeatures/</DocumentationUrl>
+  </Xsd>
+  <Xsd>
+    <Title>The definition of presentation model.</Title>
+    <Path>~/xsd/neptuo-presentationmodels-modeldefinition.xsd</Path>
+    <DocumentationUrl>https://github.com/neptuo/Framework/wiki/PresentationModels</DocumentationUrl>
+  </Xsd>
+  <Xsd>
+    <Title>The configuration for SharpKit Exugin plugin - the predecessor of UnobtrusiveFeatures.</Title>
+    <Path>~/xsd/neptuo-sharpkit-exugin.xsd</Path>
+  </Xsd>
+</Schemas>

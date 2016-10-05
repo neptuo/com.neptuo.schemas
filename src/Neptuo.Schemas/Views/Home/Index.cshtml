@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Neptuo.Schemas.Models.Xsd>
+@{
+    ViewBag.Title = "Neptuo Schemas and XSD";
+}
+
+@foreach (var schema in Model)
+{
+    var url = "http://schemas.neptuo.com" + Request.ResolveUrl(schema.Path);
+
+    <h2>@schema.Title</h2>
+    <ul>
+        <li><a href="@url">Schema</a></li>
+
+        @if (!string.IsNullOrEmpty(schema.DocumentationUrl))
+        {
+            <li><a target="_blank" href="@schema.DocumentationUrl">Documentation</a></li>
+        }
+    </ul>
+}
