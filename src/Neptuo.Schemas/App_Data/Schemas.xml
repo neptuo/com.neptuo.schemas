@@ -14,4 +14,8 @@
     <Title>The configuration for SharpKit Exugin plugin - the predecessor of UnobtrusiveFeatures.</Title>
     <Path>~/xsd/neptuo-sharpkit-exugin.xsd</Path>
   </Xsd>
+  <Xsd>
+    <Title>The configuration for "Neptuo Productivity: Add new item" Visual Studio extension.</Title>
+    <Path>~/xsd/productivity/vsix/AddNewItem.xsd</Path>
+  </Xsd>
 </Schemas>
