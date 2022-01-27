@@ -18,4 +18,8 @@
     <Title>The configuration for "Neptuo Productivity: Add new item" Visual Studio extension.</Title>
     <Path>~/xsd/productivity/vsix/AddNewItem.xsd</Path>
   </Xsd>
+  <Xsd>
+    <Title>The tag library definition for is4wfw.</Title>
+    <Path>~/xsd/is4wfw/taglib.xsd</Path>
+  </Xsd>
 </Schemas>

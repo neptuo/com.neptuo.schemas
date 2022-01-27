@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="is4wfw-taglib"
+    targetNamespace="http://schemas.neptuo.com/xsd/is4wfw/taglib.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://schemas.neptuo.com/xsd/is4wfw/taglib.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="Boolean">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false" />
+			<xs:enumeration value="true" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AttributeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="string"/>
+			<xs:enumeration value="number"/>
+			<xs:enumeration value="bool"/>
+			<xs:enumeration value="propertyReference"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="TagAttribute">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="required" minOccurs="0" maxOccurs="1" />
+			<xs:element name="prefix" minOccurs="0" maxOccurs="1" />
+			<xs:element name="default" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="type" minOccurs="1" maxOccurs="1" default="string">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="AttributeType">
+							<xs:attribute name="preferePropertyReference" type="Boolean" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="obsolete" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Tag">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="function" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="lookless" minOccurs="0" maxOccurs="1" />
+			<xs:element name="obsolete" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="attribute" minOccurs="0" maxOccurs="unbounded" type="TagAttribute" />
+			<xs:element name="anyAttribute" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AnyTag">
+		<xs:sequence>
+			<xs:element name="function" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="obsolete" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Property">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="getFunction" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="setFunction" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="obsolete" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AnyProperty">
+		<xs:sequence>
+			<xs:element name="getFunction" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="setFunction" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="obsolete" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Decorator">
+		<xs:sequence>
+			<xs:element name="function" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="attribute" minOccurs="1" maxOccurs="unbounded" type="TagAttribute" />
+			<xs:element name="features">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="providesFullTagBody" minOccurs="0" maxOccurs="1" />
+						<xs:element name="modifiesAttributes" minOccurs="0" maxOccurs="1" />
+						<xs:element name="conditionsExecution" minOccurs="0" maxOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TagLib">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
+			<xs:element name="namespace" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="count" minOccurs="0" maxOccurs="1" default="*">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="disposable" minOccurs="0" maxOccurs="1" />
+			<xs:element name="tag" minOccurs="0" maxOccurs="unbounded" type="Tag" />
+			<xs:element name="fulltag" minOccurs="0" maxOccurs="unbounded" type="Tag" />
+			<xs:element name="anyTag" minOccurs="0" maxOccurs="1" type="AnyTag" />
+			<xs:element name="anyFulltag" minOccurs="0" maxOccurs="1" type="AnyTag" />
+			<xs:element name="property" minOccurs="0" maxOccurs="unbounded" type="Property" />
+			<xs:element name="anyProperty" minOccurs="0" maxOccurs="1" type="AnyProperty" />
+			<xs:element name="decorator" minOccurs="0" maxOccurs="unbounded" type="Decorator" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="taglib" type="TagLib" />
+</xs:schema>
