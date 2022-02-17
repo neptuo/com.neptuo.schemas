@@ -104,9 +104,17 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<xs:complexType name="Constructor">
+		<xs:sequence>
+			<xs:element name="attribute" minOccurs="1" maxOccurs="unbounded" type="TagAttribute" />
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
 	<xs:complexType name="TagLib">
 		<xs:sequence>
 			<xs:element name="namespace" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="constructor" minOccurs="1" maxOccurs="1" type="Constructor" />
 			<xs:element name="count" minOccurs="0" maxOccurs="1" default="*">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
