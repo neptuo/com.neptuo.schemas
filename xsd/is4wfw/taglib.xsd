@@ -114,7 +114,7 @@
 	<xs:complexType name="TagLib">
 		<xs:sequence>
 			<xs:element name="namespace" minOccurs="0" maxOccurs="1" type="xs:string" />
-			<xs:element name="constructor" minOccurs="1" maxOccurs="1" type="Constructor" />
+			<xs:element name="constructor" minOccurs="0" maxOccurs="1" type="Constructor" />
 			<xs:element name="count" minOccurs="0" maxOccurs="1" default="*">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
