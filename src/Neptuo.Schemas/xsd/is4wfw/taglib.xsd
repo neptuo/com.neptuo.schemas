@@ -21,6 +21,13 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
+	<xs:simpleType name="SourceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="constant"/>
+			<xs:enumeration value="any"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
 	<xs:complexType name="TagAttribute">
 		<xs:all>
 			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
@@ -28,6 +35,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="AttributeType">
+                            <xs:attribute name="source" type="SourceType" />
                             <xs:attribute name="preferPropertyReference" type="Boolean" />
 						</xs:extension>
 					</xs:simpleContent>
