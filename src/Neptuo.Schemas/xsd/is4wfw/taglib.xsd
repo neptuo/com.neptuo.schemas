@@ -28,6 +28,12 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
+	<xs:simpleType name="AttributeDefaultAsType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="unused"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
 	<xs:complexType name="TagAttribute">
 		<xs:all>
 			<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string" />
@@ -41,7 +47,15 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="default" minOccurs="0" maxOccurs="1" type="xs:string" />
+			<xs:element name="default" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="as" type="AttributeDefaultAsType" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="prefix" minOccurs="0" maxOccurs="1" />
             <xs:element name="required" minOccurs="0" maxOccurs="1" />
 			<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string" />
