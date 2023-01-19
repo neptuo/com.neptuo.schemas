@@ -1,4 +1,4 @@
-<xs:schema id="PresentationModels.ModelDefinition"
+<xs:schema id="Productivity.Vsix.AddNewItem"
     targetNamespace="http://schemas.neptuo.com/xsd/productivity/vsix/AddNewItem.xsd"
     elementFormDefault="qualified"
     xmlns="http://schemas.neptuo.com/xsd/productivity/vsix/AddNewItem.xsd"
