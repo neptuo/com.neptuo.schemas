@@ -1,3 +1,3 @@
 StaticSiteCrawler.exe http://localhost:7546/ ..\artifacts\StaticSite
 
-xcopy ..\Neptuo.WebSite\Content ..\artifacts\StaticSite\Content /E /R
+xcopy ..\src\Neptuo.Schemas\xsd ..\artifacts\StaticSite\xsd /E /R
